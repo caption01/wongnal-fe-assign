@@ -6,7 +6,15 @@
   "scripts": {
     "watch": "tsc --watch",
     "dev": "nodemon dist/index.js",
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/index.js",
+    "test": "jest --watchAll --no-cache"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "watchPathIgnorePatterns": [
+      "./dist"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -20,7 +28,12 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.15",
+    "@types/supertest": "^2.0.10",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.6",
+    "supertest": "^6.0.1",
+    "ts-jest": "^26.4.3",
     "ts-node-dev": "^1.0.0"
   }
 }
