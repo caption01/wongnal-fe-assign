@@ -1,0 +1,18 @@
+import express from "express";
+import { json } from "body-parser";
+
+import { tripRouteService } from "./routes";
+
+const app = express();
+
+app.use(json());
+
+app.use(tripRouteService);
+
+app.all("*", async (_req, res) => {
+  return res.send("Hello server API");
+});
+
+app.listen(3000, () => {
+  console.log("server is run on port 3000");
+});
