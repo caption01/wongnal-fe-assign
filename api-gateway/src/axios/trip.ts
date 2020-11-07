@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
 
-import createAxiosInstance from "./index";
+import createAxiosInstance from "./createInstance";
 import { Trip } from "../type";
 
 const JSON_SERVER_URL = "http://localhost:9000/trips";

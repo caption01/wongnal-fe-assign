@@ -1,13 +1,13 @@
 import express from "express";
 import { json } from "body-parser";
 
-import { tripRouteService } from "./routes";
+import { tripServices } from "./routes/tripService";
 
 const app = express();
 
 app.use(json());
 
-app.use(tripRouteService);
+app.use(tripServices);
 
 app.all("*", async (_req, res) => {
   return res.send("Hello server API");

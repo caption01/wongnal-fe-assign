@@ -17,4 +17,4 @@ router.get("/api/trips", async (req: TripRequest, res: Response) => {
   return res.send(trips);
 });
 
-export { router as tripRouteService };
+export { router as tripServices };
