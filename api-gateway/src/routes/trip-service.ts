@@ -2,11 +2,17 @@ import { Router, Response } from "express";
 
 import { getAllTrips, searchTrips } from "../axios/trip";
 import { TripRequest } from "../type";
+import { checkObjectEmpty } from "../helper/check-empty";
+import { QueryError } from "../errors/query-error";
 
 const router = Router();
 
 router.get("/api/trips", async (req: TripRequest, res: Response) => {
-  const { keyword } = req.query;
+  const { keyword, ...restQuery } = req.query;
+
+  if (!checkObjectEmpty(restQuery)) {
+    throw new QueryError("found something incorrect");
+  }
 
   if (!keyword) {
     const trips = await getAllTrips();
