@@ -17,11 +17,11 @@ router.get("/api/trips", async (req: TripRequest, res: Response) => {
 
   if (!keyword) {
     const trips = await getAllTrips();
-    return res.send(trips);
+    return res.status(200).send(trips);
   }
 
   const trips = await searchTrips(keyword);
-  return res.send(trips);
+  return res.status(200).send(trips);
 });
 
 export { router as tripServices };
