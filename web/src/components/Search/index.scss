@@ -5,6 +5,7 @@
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--color-gray-light);
   margin-top: 4rem;
+  cursor: pointer;
 }
 
 .searchBox__input {
@@ -14,9 +15,23 @@
   text-align: center;
   color: var(--color-gray-dark);
   font-size: var(--font-size-p);
+  cursor: pointer;
+
+  &:hover {
+    &::placeholder {
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus {
+    &::placeholder {
+      transform: translateY(50px);
+    }
+  }
 
   &::placeholder {
     color: var(--color-gray-light);
     font-size: var(--font-size-p);
+    transition: all 0.3s;
   }
 }
