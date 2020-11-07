@@ -1,9 +1,10 @@
 import { Router, Response } from "express";
 
-import { getAllTrips, searchTrips } from "../axios/trip";
 import { TripRequest } from "../type";
 import { checkObjectEmpty } from "../helper/check-empty";
 import { QueryError } from "../errors/query-error";
+
+import { getAllTrips, searchTrips } from "../axios/trip";
 
 const router = Router();
 
