@@ -1,0 +1,51 @@
+.tripcard {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tripcard__left {
+  width: 30%;
+}
+
+.tripcard__right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tripcard__photo {
+  &-img {
+    width: 100%;
+  }
+}
+
+.tripcard__textbox {
+  &-title {
+  }
+
+  &-description {
+  }
+
+  &-tag {
+  }
+}
+
+.tripcard__imagebox {
+  display: flex;
+}
+
+.row {
+  max-width: 100%;
+  margin: 0 auto;
+
+  .col-1-of-3 {
+    float: left;
+    width: calc((100% - (2 * 2rem)) / 3);
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+}
