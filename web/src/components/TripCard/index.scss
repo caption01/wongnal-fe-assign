@@ -33,7 +33,7 @@
 
   &-link {
     margin-left: 1rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     text-decoration: underline;
     color: blue;
     cursor: pointer;
@@ -56,6 +56,12 @@
       text-decoration: underline;
       margin-right: 0.5rem;
       cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1rem;
+
+      &:hover {
+        font-size: var(--font-size-p);
+      }
 
       &:last-child {
         margin-left: 0.5rem;
