@@ -11,15 +11,18 @@ export interface Trip {
   tags: string[];
   cardHigh: number;
   onTagSelect: (tag: string) => void;
+  openNewWindowTab: (url: string) => void;
 }
 
 const TripCard: React.FC<Trip> = ({
   title,
+  url,
   description,
   photos,
   tags,
   cardHigh,
   onTagSelect,
+  openNewWindowTab,
 }) => {
   const subDescription = `${description.substring(0, 200)} ...`;
   const [firstImg, ...restImg] = photos;
@@ -33,15 +36,24 @@ const TripCard: React.FC<Trip> = ({
 
       <div className="tripcard__right">
         <div className="tripcard__textbox">
-          <h3 className="tripcard__textbox-title">{title}</h3>
+          <h3
+            className="tripcard__textbox-title"
+            onClick={() => openNewWindowTab(url)}
+          >
+            {title}
+          </h3>
           <div className="tripcard__textbox-description">
             {subDescription}
-            <span className="tripcard__textbox-link">อ่านต่อ</span>
+            <span
+              className="tripcard__textbox-link"
+              onClick={() => openNewWindowTab(url)}
+            >
+              อ่านต่อ
+            </span>
           </div>
           <div className="tripcard__textbox-tags">
             <span className="tripcard__textbox-tags-title">หมวด - </span>
             {tags.map((t, index) => {
-              // click tag to set keyword state
               return index !== tags.length - 1 ? (
                 <span
                   key={index}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RouteChildrenProps, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Header, Content } from "./sections";
 import { Layout, Search, TripCard, Spiner } from "./components";
@@ -39,6 +39,10 @@ const App: React.FC = () => {
     setKeyword(value);
   };
 
+  const openNewWindowTab = (url: string): void => {
+    window.open(url, "_blank");
+  };
+
   useEffect(() => {
     if (value === "") {
       history.push(`/`);
@@ -66,8 +70,9 @@ const App: React.FC = () => {
                 <TripCard
                   key={trip.eid}
                   {...trip}
-                  onTagSelect={handleSearch}
                   cardHigh={350}
+                  onTagSelect={handleSearch}
+                  openNewWindowTab={openNewWindowTab}
                 />
               );
             })}

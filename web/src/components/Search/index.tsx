@@ -1,4 +1,5 @@
 import React from "react";
+import { useClipboard } from "use-clipboard-copy";
 import "./index.scss";
 
 interface SearchProps {
@@ -8,6 +9,9 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = ({ placeholder, onSearch, keyword }) => {
+  const clipboard = useClipboard();
+  const fullPath = `${window.location.href}`;
+
   return (
     <div className="searchBox">
       <input
@@ -17,6 +21,14 @@ const Search: React.FC<SearchProps> = ({ placeholder, onSearch, keyword }) => {
         value={keyword}
         onChange={(e) => onSearch(e.target.value)}
       />
+      {keyword && (
+        <button
+          className="searchBox__copy"
+          onClick={() => clipboard.copy(fullPath)}
+        >
+          copy
+        </button>
+      )}
     </div>
   );
 };
