@@ -25,7 +25,7 @@ const TripCard: React.FC<Trip> = ({
   return (
     <div className="tripcard">
       <div className="tripcard__left">
-        <Image srcUrl={firstImg} alt="p-1" height={300} />
+        <Image srcUrl={firstImg} alt="p-1" height={350} />
       </div>
 
       <div className="tripcard__right">

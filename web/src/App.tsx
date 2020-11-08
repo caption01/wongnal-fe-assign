@@ -1,50 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { Header, Content } from "./sections";
-import { Layout, Search, TripCard } from "./components";
+import { Layout, Search, TripCard, Spiner } from "./components";
 import { Trip } from "./components/types";
-import { useDebounce } from "./hooks";
+import { useDebounce, useRequest } from "./hooks";
 
-const mockTrip: Trip[] = [
-  {
-    title: "เกาะช้าง",
-    eid: "1",
-    url: "https://www.wongnai.com/trips/travel-koh-chang",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus cum nam amet illum, facilis explicabo quaerat aliquam provident at maxime, vero quidem magni aspernatur quia quis quod veritatis? Repudiandae?",
-    photos: [
-      "https://img.wongnai.com/p/1600x0/2019/07/02/3c758646aa6c426ba3c6a81f57b20bd6.jpg",
-      "https://img.wongnai.com/p/1600x0/2019/07/02/6a2733ab91164ac8943b77deb14fdbde.jpg",
-      "https://img.wongnai.com/p/1600x0/2019/07/02/6a2733ab91164ac8943b77deb14fdbde.jpg",
-      "https://img.wongnai.com/p/1600x0/2019/07/02/6a2733ab91164ac8943b77deb14fdbde.jpg",
-    ],
-    tags: ["เกาะ", "ทะเล", "จุดชมวิว", "ธรรมชาติ", "ตราด"],
-  },
-  {
-    title: "เกาะหลีเปะ",
-    eid: "2",
-    url: "https://www.wongnai.com/trips/travel-koh-lipe",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex repellendus cum nam amet illum, facilis explicabo quaerat aliquam provident at maxime, vero quidem magni aspernatur quia quis quod veritatis? Repudiandae?",
-    photos: [
-      "https://img.wongnai.com/p/1600x0/2019/07/31/9969a296fe1b452a8e64c2b7cfd58319.jpg",
-      "https://img.wongnai.com/p/1600x0/2019/07/31/58348f4c3ace47349e80e5930a7a525a.jpg",
-      "https://img.wongnai.com/p/1600x0/2019/07/31/58348f4c3ace47349e80e5930a7a525a.jpg",
-      "https://img.wongnai.com/p/1600x0/2019/07/31/58348f4c3ace47349e80e5930a7a525a.jpg",
-    ],
-    tags: ["เกาะ", "ทะเล", "จุดชมวิว", "ธรรมชาติ", "ตราด"],
-  },
-];
+type TripsResponse = {
+  data: Trip[];
+  loading: boolean;
+};
+
+const useRequestTrips = (keyword: string): TripsResponse => {
+  const endPoint = `/api/trips`;
+  const params = { keyword };
+
+  const axiosConfig = {
+    method: "get" as "get",
+    url: endPoint,
+    params,
+  };
+
+  const { data, loading } = useRequest(axiosConfig);
+  return { data, loading };
+};
 
 const App = () => {
   const [keyword, setKeyword] = useState("");
-  const value = useDebounce(keyword, 2000);
+  const value = useDebounce(keyword, 2000) as string;
+  const { data, loading } = useRequestTrips(value);
 
   const handleSearch = (value: string) => {
     setKeyword(value);
   };
-
-  useEffect(() => {}, [value]);
 
   return (
     <Layout>
@@ -56,11 +43,15 @@ const App = () => {
         />
       </Header>
       <Content>
-        <>
-          {mockTrip.map((trip) => {
-            return <TripCard key={trip.eid} {...trip} />;
-          })}
-        </>
+        {loading ? (
+          <Spiner loading={loading} />
+        ) : (
+          <>
+            {data?.map((trip) => {
+              return <TripCard key={trip.eid} {...trip} />;
+            })}
+          </>
+        )}
       </Content>
     </Layout>
   );
