@@ -13,3 +13,25 @@
 
   --letter-space: 1.5px;
 }
+
+.click-able2 {
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(var(--color-black), 0.2);
+  }
+}

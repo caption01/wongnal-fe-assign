@@ -23,7 +23,7 @@ const Search: React.FC<SearchProps> = ({ placeholder, onSearch, keyword }) => {
       />
       {keyword && (
         <button
-          className="searchBox__copy"
+          className="searchBox__copy click-able"
           onClick={() => clipboard.copy(fullPath)}
         >
           copy
