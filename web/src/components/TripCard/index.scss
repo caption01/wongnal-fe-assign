@@ -3,6 +3,14 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 8rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2rem;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
 }
 
 .tripcard__left {
@@ -22,6 +30,25 @@
     letter-spacing: var(--letter-space);
     margin-bottom: 1rem;
     cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+
+    &:after {
+      content: "\00bb";
+      position: absolute;
+      opacity: 0;
+      bottom: 0;
+      right: -2.5rem;
+      transition: all 0.5s;
+      color: var(--color-gray-dark);
+    }
+
+    &:hover {
+      &:after {
+        opacity: 1;
+        right: 0;
+      }
+    }
   }
 
   &-description {
