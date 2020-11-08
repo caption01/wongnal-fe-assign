@@ -9,15 +9,15 @@ export interface Trip {
   description: string;
   photos: string[];
   tags: string[];
+  onTagSelect: (tag: string) => void;
 }
 
 const TripCard: React.FC<Trip> = ({
   title,
-  eid,
-  url,
   description,
   photos,
   tags,
+  onTagSelect,
 }) => {
   const subDescription = `${description.substring(0, 200)} ...`;
   const [firstImg, ...restImg] = photos;
@@ -40,13 +40,22 @@ const TripCard: React.FC<Trip> = ({
             {tags.map((t, index) => {
               // click tag to set keyword state
               return index !== tags.length - 1 ? (
-                <span key={index} className="tripcard__textbox-tags-item">
+                <span
+                  key={index}
+                  className="tripcard__textbox-tags-item"
+                  onClick={() => onTagSelect(t)}
+                >
                   {t}
                 </span>
               ) : (
                 <Fragment key={index}>
                   <span>และ</span>
-                  <span className="tripcard__textbox-tags-item final">{t}</span>
+                  <span
+                    className="tripcard__textbox-tags-item final"
+                    onClick={() => onTagSelect(t)}
+                  >
+                    {t}
+                  </span>
                 </Fragment>
               );
             })}

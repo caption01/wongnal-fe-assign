@@ -48,7 +48,9 @@ const App = () => {
         ) : (
           <>
             {data?.map((trip) => {
-              return <TripCard key={trip.eid} {...trip} />;
+              return (
+                <TripCard key={trip.eid} {...trip} onTagSelect={handleSearch} />
+              );
             })}
           </>
         )}
