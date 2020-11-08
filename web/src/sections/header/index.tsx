@@ -1,5 +1,4 @@
 import React, { ReactChild, FC } from "react";
-import { Search } from "../../components";
 import "./index.scss";
 
 type HeaderProps = {

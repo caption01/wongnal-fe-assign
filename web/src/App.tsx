@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Header, Content } from "./sections";
 import { Layout, Search, TripCard } from "./components";
 import { Trip } from "./components/types";
+import { useDebounce } from "./hooks";
 
 const mockTrip: Trip[] = [
   {
@@ -36,10 +37,23 @@ const mockTrip: Trip[] = [
 ];
 
 const App = () => {
+  const [keyword, setKeyword] = useState("");
+  const value = useDebounce(keyword, 2000);
+
+  const handleSearch = (value: string) => {
+    setKeyword(value);
+  };
+
+  useEffect(() => {}, [value]);
+
   return (
     <Layout>
       <Header title="เที่ยวไหนดี">
-        <Search placeholder="หาที่เที่ยวแล้วไปกัน..." />
+        <Search
+          placeholder="หาที่เที่ยวแล้วไปกัน..."
+          onSearch={handleSearch}
+          keyword={keyword}
+        />
       </Header>
       <Content>
         <>
