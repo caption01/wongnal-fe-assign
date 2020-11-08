@@ -9,6 +9,7 @@ export interface Trip {
   description: string;
   photos: string[];
   tags: string[];
+  cardHigh: number;
   onTagSelect: (tag: string) => void;
 }
 
@@ -17,15 +18,17 @@ const TripCard: React.FC<Trip> = ({
   description,
   photos,
   tags,
+  cardHigh,
   onTagSelect,
 }) => {
   const subDescription = `${description.substring(0, 200)} ...`;
   const [firstImg, ...restImg] = photos;
+  const smImgHigh = cardHigh * 0.35;
 
   return (
     <div className="tripcard">
       <div className="tripcard__left">
-        <Image srcUrl={firstImg} alt="p-1" height={350} />
+        <Image srcUrl={firstImg} alt="p-1" height={cardHigh} />
       </div>
 
       <div className="tripcard__right">
@@ -65,7 +68,7 @@ const TripCard: React.FC<Trip> = ({
         <div className="tripcard__imagebox row">
           {restImg.map((url, index) => (
             <div className="col-1-of-3" key={index}>
-              <Image srcUrl={url} alt="p-2" height={150} />
+              <Image srcUrl={url} alt="p-2" height={smImgHigh} />
             </div>
           ))}
         </div>

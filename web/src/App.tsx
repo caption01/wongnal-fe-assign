@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { RouteChildrenProps, useHistory } from "react-router-dom";
 
 import { Header, Content } from "./sections";
 import { Layout, Search, TripCard, Spiner } from "./components";
 import { Trip } from "./components/types";
-import { useDebounce, useRequest } from "./hooks";
+import { useDebounce, useRequest, useQuery } from "./hooks";
 
 type TripsResponse = {
   data: Trip[];
@@ -24,14 +25,27 @@ const useRequestTrips = (keyword: string): TripsResponse => {
   return { data, loading };
 };
 
-const App = () => {
-  const [keyword, setKeyword] = useState("");
-  const value = useDebounce(keyword, 2000) as string;
+const App: React.FC = () => {
+  const query = useQuery();
+  const history = useHistory();
+
+  const keywordQuery = query.get("keyword") || "";
+
+  const [keyword, setKeyword] = useState(keywordQuery);
+  const value = useDebounce(keyword, 1500) as string;
   const { data, loading } = useRequestTrips(value);
 
   const handleSearch = (value: string) => {
     setKeyword(value);
   };
+
+  useEffect(() => {
+    if (value === "") {
+      history.push(`/`);
+      return;
+    }
+    history.push(`/?keyword=${value}`);
+  }, [value, history]);
 
   return (
     <Layout>
@@ -49,7 +63,12 @@ const App = () => {
           <>
             {data?.map((trip) => {
               return (
-                <TripCard key={trip.eid} {...trip} onTagSelect={handleSearch} />
+                <TripCard
+                  key={trip.eid}
+                  {...trip}
+                  onTagSelect={handleSearch}
+                  cardHigh={350}
+                />
               );
             })}
           </>
