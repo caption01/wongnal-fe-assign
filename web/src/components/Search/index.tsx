@@ -1,12 +1,16 @@
 import React from "react";
 import "./index.scss";
 
-const Search: React.FC = () => {
+interface SearchProps {
+  placeholder: string;
+}
+
+const Search: React.FC<SearchProps> = ({ placeholder }) => {
   return (
     <div className="searchBox">
       <input
         type="text"
-        placeholder="หาที่เที่ยวแล้วไปกัน..."
+        placeholder={placeholder}
         className="searchBox__input"
       />
     </div>

@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 8rem;
 }
 
 .tripcard__left {
@@ -15,20 +16,49 @@
   justify-content: space-between;
 }
 
-.tripcard__photo {
-  &-img {
-    width: 100%;
-  }
-}
-
 .tripcard__textbox {
   &-title {
+    font-size: var(--font-size-h3);
+    letter-spacing: var(--letter-space);
+    margin-bottom: 1rem;
   }
 
   &-description {
+    font-size: var(--font-size-p);
+    color: var(--color-gray-dark);
+    margin-bottom: 1rem;
+    text-align: justify;
   }
 
-  &-tag {
+  &-link {
+    margin-left: 1rem;
+    font-size: 1rem;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    line-height: 1rem;
+    transition: all 0.2s;
+
+    &:hover {
+      font-size: var(--font-size-p);
+    }
+  }
+
+  &-tags {
+    font-size: 1.25rem;
+    color: var(--color-gray-dark);
+
+    &-title {
+    }
+
+    &-item {
+      text-decoration: underline;
+      margin-right: 0.5rem;
+
+      &:last-child {
+        margin-left: 0.5rem;
+      }
+    }
   }
 }
 

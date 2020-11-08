@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 4rem 0rem;
-  letter-spacing: 3px;
+  letter-spacing: var(--letter-space);
 }
 
 .header__title {
