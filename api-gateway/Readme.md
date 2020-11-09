@@ -1,9 +1,9 @@
-### JSON-DB
+#### JSON-DB
 
 - get all trips = http://localhost:9000/trips
 - query = http://localhost:9000/trips?q=<keyword>
 
-### wongnai api-gatewat feature
+#### wongnai api-gatewat feature
 
 - [x] get all trips in json-db.
 - [x] keyword can search by title, desc, tag
