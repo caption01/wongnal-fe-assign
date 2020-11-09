@@ -21,3 +21,11 @@
     - create .env by rename env.example (every env must prefix with "REACT_APP")
     - npm install
     - npm run start
+
+---
+
+name: mr.nutchapon hanouypornlert
+
+tel: 0876061277
+
+email: nutchapon.han@gmail.com
