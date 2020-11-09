@@ -9,51 +9,51 @@
   margin-top: 4rem;
   cursor: pointer;
   position: relative;
-}
 
-.searchBox__input {
-  width: 100%;
-  height: 30px;
-  border: none;
-  text-align: center;
-  color: var(--color-gray-dark);
-  font-size: var(--font-size-p);
-  cursor: pointer;
-
-  &:hover {
-    &::placeholder {
-      transform: scale(1.1);
-    }
-  }
-
-  &:focus {
-    outline: none;
-    &::placeholder {
-      transform: translateY(50px);
-    }
-  }
-
-  &::placeholder {
-    color: var(--color-gray-light);
+  &__input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    text-align: center;
+    color: var(--color-gray-dark);
     font-size: var(--font-size-p);
-    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      &::placeholder {
+        transform: scale(1.1);
+      }
+    }
+
+    &:focus {
+      outline: none;
+      &::placeholder {
+        transform: translateY(50px);
+      }
+    }
+
+    &::placeholder {
+      color: var(--color-gray-light);
+      font-size: var(--font-size-p);
+      transition: all 0.3s;
+    }
   }
-}
 
-.searchBox__copy {
-  position: absolute;
-  bottom: 1rem;
-  right: 0;
-  height: 2rem;
-  border: none;
-  padding: 0 1rem;
-  border-radius: 1rem;
-  background-color: var(--bg-color);
-  color: var(--color-gray-light);
-  cursor: pointer;
+  &__copy {
+    position: absolute;
+    bottom: 1rem;
+    right: 0;
+    height: 2rem;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    background-color: var(--bg-color);
+    color: var(--color-gray-light);
+    cursor: pointer;
 
-  &:hover {
-    background-color: #f7f7f7;
+    &:hover {
+      background-color: #f7f7f7;
+    }
   }
 }
 

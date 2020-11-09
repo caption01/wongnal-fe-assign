@@ -17,8 +17,8 @@ const Image: React.FC<ImageProps> = ({
   height?: number;
 }) => {
   return (
-    <figure className="image">
-      <img className="image-photo" src={srcUrl} alt={alt} height={height} />
+    <figure className="frame">
+      <img className="frame__photo" src={srcUrl} alt={alt} height={height} />
     </figure>
   );
 };

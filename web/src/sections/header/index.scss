@@ -4,10 +4,10 @@
   align-items: center;
   padding: 4rem 0rem;
   letter-spacing: var(--letter-space);
-}
 
-.header__title {
-  font-size: var(--font-size-h1);
-  font-weight: 400;
-  color: var(--color-blue);
+  &__title {
+    font-size: var(--font-size-h1);
+    font-weight: 400;
+    color: var(--color-blue);
+  }
 }

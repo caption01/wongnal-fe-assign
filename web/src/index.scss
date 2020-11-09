@@ -1,5 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap");
 
+:root {
+  //color
+  --bg-color: #ffffff;
+
+  --color-black: #000000;
+  --color-gray-dark: #858585;
+  --color-gray-light: #cacaca;
+  --color-blue: #39a5e6;
+
+  //fontSize
+  --font-size-h1: 7rem;
+  --font-size-h3: 2.5rem;
+  --font-size-p: 1.5rem;
+
+  --letter-space: 1.5px;
+}
+
 * {
   margin: 0;
   padding: 0;

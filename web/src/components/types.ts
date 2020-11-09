@@ -1,3 +1,10 @@
-import { Trip } from "./TripCard";
+interface Trip {
+  title: string;
+  eid: string;
+  url: string;
+  description: string;
+  photos: string[];
+  tags: string[];
+}
 
 export type { Trip };

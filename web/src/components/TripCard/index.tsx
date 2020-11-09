@@ -1,20 +1,17 @@
-import React, { Fragment } from "react";
-import { Image } from "../index";
+import React from "react";
+
+import { Image, TextBox } from "../index";
+import { Trip } from "../types";
+
 import "./index.scss";
 
-export interface Trip {
-  title: string;
-  eid: string;
-  url: string;
-  description: string;
-  photos: string[];
-  tags: string[];
+interface TripCardProps extends Trip {
   cardHigh: number;
   onTagSelect: (tag: string) => void;
   openNewWindowTab: (url: string) => void;
 }
 
-const TripCard: React.FC<Trip> = ({
+const TripCard: React.FC<TripCardProps> = ({
   title,
   url,
   description,
@@ -26,7 +23,6 @@ const TripCard: React.FC<Trip> = ({
 }) => {
   const subDescription = `${description.substring(0, 200)} ...`;
   const [firstImg, ...restImg] = photos;
-  const smImgHigh = cardHigh * 0.35;
 
   return (
     <div className="tripcard">
@@ -35,52 +31,19 @@ const TripCard: React.FC<Trip> = ({
       </div>
 
       <div className="tripcard__right">
-        <div className="tripcard__textbox">
-          <h3
-            className="tripcard__textbox-title"
-            onClick={() => openNewWindowTab(url)}
-          >
-            {title}
-          </h3>
-          <div className="tripcard__textbox-description">
-            {subDescription}
-            <span
-              className="tripcard__textbox-link"
-              onClick={() => openNewWindowTab(url)}
-            >
-              อ่านต่อ
-            </span>
-          </div>
-          <div className="tripcard__textbox-tags">
-            <span className="tripcard__textbox-tags-title">หมวด - </span>
-            {tags.map((t, index) => {
-              return index !== tags.length - 1 ? (
-                <span
-                  key={index}
-                  className="tripcard__textbox-tags-item"
-                  onClick={() => onTagSelect(t)}
-                >
-                  {t}
-                </span>
-              ) : (
-                <Fragment key={index}>
-                  <span>และ</span>
-                  <span
-                    className="tripcard__textbox-tags-item final"
-                    onClick={() => onTagSelect(t)}
-                  >
-                    {t}
-                  </span>
-                </Fragment>
-              );
-            })}
-          </div>
-        </div>
+        <TextBox
+          title={title}
+          description={subDescription}
+          tags={tags}
+          url={url}
+          onLinkClick={openNewWindowTab}
+          onTagClick={onTagSelect}
+        />
 
-        <div className="tripcard__imagebox row">
+        <div className="tripcard__right-imageBox row">
           {restImg.map((url, index) => (
             <div className="col-1-of-3" key={index}>
-              <Image srcUrl={url} alt="p-2" height={smImgHigh} />
+              <Image srcUrl={url} alt="p-2" height={cardHigh * 0.4} />
             </div>
           ))}
         </div>

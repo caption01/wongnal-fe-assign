@@ -25,83 +25,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
 
-.tripcard__textbox {
-  &-title {
-    font-size: var(--font-size-h3);
-    letter-spacing: var(--letter-space);
-    margin-bottom: 1rem;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s;
-
-    &:after {
-      content: "\00bb";
-      position: absolute;
-      opacity: 0;
-      bottom: 0;
-      right: -2.5rem;
-      transition: all 0.5s;
-      color: var(--color-gray-dark);
-    }
-
-    &:hover {
-      &:after {
-        opacity: 1;
-        right: 0;
-      }
-    }
+  &-imageBox {
+    display: flex;
   }
-
-  &-description {
-    font-size: var(--font-size-p);
-    color: var(--color-gray-dark);
-    margin-bottom: 1rem;
-    text-align: justify;
-  }
-
-  &-link {
-    margin-left: 1rem;
-    font-size: 1.25rem;
-    text-decoration: underline;
-    color: var(--color-blue);
-    cursor: pointer;
-    line-height: 1rem;
-    transition: all 0.2s;
-
-    &:hover {
-      font-size: var(--font-size-p);
-    }
-  }
-
-  &-tags {
-    font-size: 1.25rem;
-    color: var(--color-gray-dark);
-
-    &-title {
-    }
-
-    &-item {
-      text-decoration: underline;
-      margin-right: 0.5rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      line-height: 1rem;
-
-      &:hover {
-        font-size: var(--font-size-p);
-      }
-
-      &:last-child {
-        margin-left: 0.5rem;
-      }
-    }
-  }
-}
-
-.tripcard__imagebox {
-  display: flex;
 }
 
 .row {
