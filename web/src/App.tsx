@@ -10,6 +10,7 @@ import "./index.scss";
 type TripsResponse = {
   data: Trip[];
   loading: boolean;
+  error: Error;
 };
 
 const useRequestTrips = (keyword: string): TripsResponse => {
@@ -22,8 +23,8 @@ const useRequestTrips = (keyword: string): TripsResponse => {
     params,
   };
 
-  const { data, loading } = useRequest(request);
-  return { data, loading };
+  const { data, loading, error } = useRequest(request);
+  return { data, loading, error };
 };
 
 const openNewWindowTab = (url: string): void => {
@@ -39,7 +40,7 @@ const App: React.FC = () => {
 
   const value = useDebounce(keyword, 1500) as string;
 
-  const { data, loading } = useRequestTrips(value);
+  const { data, loading, error } = useRequestTrips(value);
 
   const handleSearch = (value: string) => setKeyword(value);
 
@@ -51,6 +52,10 @@ const App: React.FC = () => {
 
     history.push(`/?keyword=${value}`);
   }, [value, history]);
+
+  if (error) {
+    history.push(`/notfound`);
+  }
 
   return (
     <Layout>

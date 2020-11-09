@@ -1,0 +1,21 @@
+.error {
+  text-align: center;
+
+  &__img {
+    max-width: 300px;
+    border-radius: 5rem;
+    transition: all 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-0.3rem);
+      box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+    }
+
+    &:active {
+      outline: none;
+      transform: translateY(0.1rem);
+      box-shadow: 0 0.5rem 1rem rgba(var(--color-black), 0.2);
+    }
+  }
+}

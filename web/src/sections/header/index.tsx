@@ -3,7 +3,7 @@ import "./index.scss";
 
 type HeaderProps = {
   title: string;
-  children: ReactChild;
+  children?: ReactChild;
 };
 
 const Header: FC<HeaderProps> = ({ title, children }) => {
