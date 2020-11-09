@@ -2,11 +2,11 @@
 
 #### How to run
 
-    1. json-server => npm run start (because api-gateway run test must have json-db start up)
+    1. json-server => npm install => npm run start (because api-gateway run test must have json-db start up)
 
-    2. api-gateway => npm run start
+    2. api-gateway => npm install => npm run start
 
-    3. web => npm run start
+    3. web => npm install => npm run start
 
 #### API-GATEWAY
 
