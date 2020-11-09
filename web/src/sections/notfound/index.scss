@@ -1,15 +1,22 @@
 .error {
   text-align: center;
 
+  &__text {
+    font-size: var(--font-size-h3);
+    color: var(--color-blue);
+    margin-bottom: 2rem;
+  }
+
   &__img {
     max-width: 300px;
     border-radius: 5rem;
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
     transition: all 0.2s;
 
     &:hover {
       cursor: pointer;
-      transform: translateY(-0.3rem);
-      box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+      transform: scale(1.1);
     }
 
     &:active {
