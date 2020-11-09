@@ -12,7 +12,11 @@
 - [x] creaet static components.
 - [x] add fetcher.
 - [x] dynamic components.
-- [ ] handle error.
-- [ ] refactor code.
-- [ ] final check style.
-- [ ] testing
+- [x] handle error.
+- [x] refactor code.
+- [x] final check style.
+- [x] testing
+
+#### create .env see env.example
+
+#### default connect api-gateway on port http://localhost:4000
